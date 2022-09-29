@@ -1,6 +1,6 @@
 def palindrome_check(x):
     """Sprawdzenie łańcuch znaków pod kątem bycia palindromem """
-    return True if x[::] == x[::-1] else False
+    return x[::] == x[::-1]
 
 
 word = input("Podaj słowo do sprawdzenia: ")
