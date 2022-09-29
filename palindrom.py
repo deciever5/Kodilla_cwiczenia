@@ -1,11 +1,6 @@
 def palindrome_check(x):
-    if x[::] == x[::-1]:
-        return True
+    return True if x[::] == x[::-1] else False
 
 
-word = input()
-print(f'Słowo {word} to {not palindrome_check(word) * "nie"} palindrom')
-"""if palindrome_check(word) is True:
-    print(f'słowo {word} to palindrom')
-else:
-    print(f'słowo {word} to nie palindrom')"""
+word = input("Podaj słowo do sprawdzenia: ")
+print(f'Słowo {word} to{[" nie ", " "][palindrome_check(word)]}palindrom')
