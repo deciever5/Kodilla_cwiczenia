@@ -1,5 +1,5 @@
 def palindrome_check(x):
-    """Sprawdzenie łańcuch znaków pod kątem bycia palindromem """
+    """Sprawdzenie łańcucha znaków pod kątem bycia palindromem """
     return x[::] == x[::-1]
 
 
