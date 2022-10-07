@@ -1,6 +1,8 @@
 import copy
 import csv
 import sys
+import tkinter
+from tkinter import *
 
 goods = {"milk": [100.5, "l", 2.5], "coffee": [50, "kg", 10], "tea": [30, "kg", 5], "pepsi": [200, "l", 6],
          "wine": [10, "l", 30], "beer": [200, "l", 3]}
@@ -15,6 +17,7 @@ def export_csv():
         writer = csv.writer(csvfile)
         writer.writerow(headers)
         writer.writerows([key, *value] for key, value in goods.items())
+    export_sales_to_csv()
 
 
 def export_sales_to_csv():
@@ -84,6 +87,37 @@ def show_revenue():
 if len(sys.argv) > 1:
     load_items_from_csv()
 
+
+class App:
+    def __init__(self, master):
+        fm1 = Frame(master)
+        fm2 = Frame(master)
+        fm3 = Frame(master)
+        exiting = tkinter.Button(fm3, text="Exit", command=exit)
+        exiting.pack(side="right")
+        show = tkinter.Button(fm2, text="Show warehouse", command=get_items)
+        show.pack(side="top")
+        add = tkinter.Button(fm1, text="Add item", command=add_item)
+        add.pack(side="left")
+        sell = tkinter.Button(fm1, text="Sell item", command=sell_item)
+        sell.pack(side="left")
+        cost = tkinter.Button(fm2, text="Warehouse value", command=get_costs)
+        cost.pack(side="top")
+        revenue = tkinter.Button(fm2, text="Revenue value", command=show_revenue)
+        revenue.pack(side="top")
+        save = tkinter.Button(fm3, text="Save warehouse", command=export_csv)
+        save.pack(side="right")
+        fm1.pack(side=LEFT, fill=BOTH, expand=YES)
+        fm2.pack(side=LEFT, padx=10)
+        fm3.pack(side=RIGHT, padx=10)
+
+
+window = tkinter.Tk()
+window.title("Storage managment")
+display = App(window)
+window.mainloop()
+
+"""
 while True:
     user_operation = input("What would you like to do? ")
     if user_operation == "exit":
@@ -96,8 +130,6 @@ while True:
         sell_item()
     elif user_operation == "cost":
         get_costs()
-    elif user_operation == "income":
-        get_income()
     elif user_operation == "revenue":
         show_revenue()
     elif user_operation == "save":
@@ -105,4 +137,4 @@ while True:
         export_sales_to_csv()
 
     else:
-        print("No such operation.")
+        print("No such operation.")"""
