@@ -7,7 +7,7 @@ sold_goods = copy.deepcopy(goods)
 for k, v in sold_goods.items(): v[0] = 0
 
 
-def getitems():
+def get_items():
     print("Name\tQuantity\tUnit\tUnit Price (PLN)")
     print("----\t--------\t----\t----------------")
     for key, value in goods.items():
@@ -26,12 +26,24 @@ def sell_item():
     sold_item = input("Item sold: ")
     quantity_sold = input("Quantity sold: ")
     goods[sold_item][0] -= int(quantity_sold)
-    print(f"Succesfully sold {quantity_sold}{goods[sold_item][1]} of {sold_item}")
+    print(f"Successfully sold {quantity_sold}{goods[sold_item][1]} of {sold_item}")
     sold_goods[sold_item][0] += int(quantity_sold)
-    getitems()
+    get_items()
+
 
 def get_costs():
-    pass
+    goods_value = sum([x * z for x, _, z in goods.values()])
+    return goods_value
+
+
+def get_income():
+    sales_value = sum([x * z for x, _, z in sold_goods.values()])
+    return sales_value
+
+
+def show_revenue():
+    print(f"Revenue breakdown (PLN)\nIncome: {get_income():.2f}\nCosts: {get_costs():.2f}\n-----------")
+    print(f"Revenue: {(get_income() - get_costs()):.2f}")
 
 
 while True:
@@ -39,8 +51,16 @@ while True:
     if user_operation == "exit":
         exit()
     elif user_operation == "show":
-        getitems()
+        get_items()
     elif user_operation == "add":
         add_item()
     elif user_operation == "sell":
         sell_item()
+    elif user_operation == "cost":
+        get_costs()
+    elif user_operation == "income":
+        get_income()
+    elif user_operation == "revenue":
+        show_revenue()
+    else:
+        print("No such operation.")
