@@ -1,10 +1,45 @@
 import copy
+import csv
+import sys
 
-goods = {"milk": [100, "l", 2.5], "coffee": [50, "kg", 10], "tea": [30, "kg", 5], "pepsi": [200, "l", 6],
+goods = {"milk": [100.5, "l", 2.5], "coffee": [50, "kg", 10], "tea": [30, "kg", 5], "pepsi": [200, "l", 6],
          "wine": [10, "l", 30], "beer": [200, "l", 3]}
 
 sold_goods = copy.deepcopy(goods)
 for k, v in sold_goods.items(): v[0] = 0
+
+
+def export_csv():
+    headers = ["Name", "Quantity", "Unit", "Unit Price (PLN)"]
+    with open("goods.csv", "w", newline="") as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(headers)
+        writer.writerows([key, *value] for key, value in goods.items())
+
+
+def export_sales_to_csv():
+    headers = ["Name", "Quantity", "Unit", "Unit Price (PLN)"]
+    with open("sold_goods.csv", "w", newline="") as csvfile:
+        writer = csv.writer(csvfile)
+        writer.writerow(headers)
+        writer.writerows([key, *value] for key, value in sold_goods.items())
+
+
+def load_items_from_csv():
+    with open(sys.argv[1], newline="") as csvfile:
+        for _, value in goods.items(): value.clear()
+        reader = csv.reader(csvfile)
+        next(reader)
+        for row in reader:
+            goods[row[0]] = [float(row[1]), row[2], float(row[3])]
+    with open(sys.argv[2], newline="") as csvfile:
+        for _, value in sold_goods.items(): value.clear()
+        reader = csv.reader(csvfile)
+        next(reader)
+        for row in reader:
+            sold_goods[row[0]] = [float(row[1]), row[2], float(row[3])]
+
+    print(f"Successfully loaded data from {sys.argv[1]} and {sys.argv[2]}")
 
 
 def get_items():
@@ -46,6 +81,9 @@ def show_revenue():
     print(f"Revenue: {(get_income() - get_costs()):.2f}")
 
 
+if len(sys.argv) > 1:
+    load_items_from_csv()
+
 while True:
     user_operation = input("What would you like to do? ")
     if user_operation == "exit":
@@ -62,5 +100,9 @@ while True:
         get_income()
     elif user_operation == "revenue":
         show_revenue()
+    elif user_operation == "save":
+        export_csv()
+        export_sales_to_csv()
+
     else:
         print("No such operation.")
