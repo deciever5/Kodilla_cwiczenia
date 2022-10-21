@@ -1,38 +1,12 @@
-def longest_slide_down(pyramid):
-    answer1, previous_max_idx = [0], int(0)
-    for idx, num in enumerate(pyramid[1::]):
-        nums_considered = [num[previous_max_idx], num[previous_max_idx + 1]]
-        answer1[0] += max(nums_considered)
-        previous_max_idx = num.index(max(nums_considered))
-    return answer1[0]
+def longest_slide_down(lista):
+    i =len(lista)-2
+    while i > -1:
+        for j in range(len(lista[i])):
+            lista[i][j] += max(lista[i+1][j],lista[i+1][j+1])
+        i -= 1
+    return lista[0][0]
 
 
-def longest_slide_up(pyramid):
-    allchains = []
-    for num_in_last_row in pyramid[-1::]:
-
-        for index_in_last_row, starting_number in enumerate(num_in_last_row):
-            allchains.append(answer[0])
-            answer[0] = starting_number
-            previous_max_idx = index_in_last_row
-            for idx_of_current_row, current_row in reversed(list(enumerate(pyramid[:-1:]))):
-                if previous_max_idx == len(current_row):
-                    nums_considered = [current_row[len(current_row) - 1]]
-                elif previous_max_idx == 0:
-                    nums_considered = [current_row[0]]
-                else:
-                    nums_considered = [current_row[previous_max_idx], current_row[previous_max_idx - 1]]
-                answer[0] += max(nums_considered)
-                if current_row.index(max(nums_considered)) in (previous_max_idx, (previous_max_idx - 1)):
-                    previous_max_idx = current_row.index(max(nums_considered))
-                else:
-                    while True:
-                        if current_row[(current_row.index(max(nums_considered)) + 1)::].index(max(nums_considered)) in (
-                                previous_max_idx, (previous_max_idx - 1)):
-                            previous_max_idx = current_row.index(max(nums_considered))
-                            break
-
-                print(f'start= {starting_number} row{idx_of_current_row} = {answer[0]} {allchains}')
 
 
 lista = [[75],
@@ -51,6 +25,7 @@ lista = [[75],
          [63, 66, 4, 68, 89, 53, 67, 30, 73, 16, 69, 87, 40, 31],
          [4, 62, 98, 27, 23, 9, 70, 98, 73, 93, 38, 53, 60, 4, 23]
          ]
-answer = [0]
-longest_slide_down(lista)
-longest_slide_up(lista)
+
+print(longest_slide_down(lista))
+
+
