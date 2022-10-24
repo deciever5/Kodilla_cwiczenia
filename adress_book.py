@@ -1,4 +1,6 @@
 from faker import Faker
+from datetime import datetime,timedelta
+from functools import wraps
 
 fake = Faker()
 
@@ -39,8 +41,17 @@ class BusinessContact(BaseContact):
     def contact(self):
         print(f'Wybieram numer {self.work_phone} i dzwonię do {self.name}')
 
+def runtime(func):
+    start = datetime.now()
+    func()
+    end = datetime.now()
+    difference = end - start
+    print(f'Wykonanie funkcji zajęło {difference} czasu')
 
-def create_contacts(card_type, ammount):
+@runtime
+def create_contacts():
+    card_type = BusinessContact
+    ammount = 1000000
     name = fake.name()
     address = fake.address()
     email = fake.email()
@@ -52,3 +63,4 @@ def create_contacts(card_type, ammount):
         return [card_type(company, job, work_phone, name, address, email, home_phone) for _ in range(ammount)]
     elif card_type == BaseContact:
         return [card_type(name, address, email, home_phone) for _ in range(ammount)]
+
