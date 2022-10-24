@@ -4,12 +4,12 @@ fake = Faker()
 
 
 class BaseContact:
-    def __init__(self):
-        self.name = fake.name()
-        self.address = fake.address()
-        self.email = fake.email()
-        self.home_phone = fake.phone_number()
-        self._name_len = len(self.name)
+    def __init__(self, name, address, email, work_phone):
+        self.name = name
+        self.address = address
+        self.email = email
+        self.home_phone = work_phone
+        self._label_lenght = len(self.name)
 
     def contact(self):
         print(f'Wybieram numer telefonu {self.home_phone} i dzwonię do {self.name}')
@@ -17,17 +17,21 @@ class BaseContact:
     def __str__(self):
         return f'{self.name}, {self.address}, {self.email}, {self.home_phone}'
 
-    def label_length(self):
-        print(len(self.name))
-        return len(self.name)
+    @property
+    def label_lenght(self):
+        return self._label_lenght
+
+    @label_lenght.setter
+    def label_lenght(self, value):
+        self._label_lenght = value
 
 
 class BusinessContact(BaseContact):
-    def __init__(self):
-        super().__init__()
-        self.company = fake.company()
-        self.job = fake.job()
-        self.work_phone = fake.phone_number()
+    def __init__(self, company, job, work_phone, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.company = company
+        self.job = job
+        self.work_phone = work_phone
 
     def __str__(self):
         return f'{self.name}, {self.company}, {self.email}, {self.work_phone}'
@@ -36,10 +40,15 @@ class BusinessContact(BaseContact):
         print(f'Wybieram numer {self.work_phone} i dzwonię do {self.name}')
 
 
-
-
-lista_wizytowek = [BaseContact() for _ in range(5)]
-lista_wizytowek2 = [BusinessContact() for _ in range(5)]
-lista_wizytowek[0].contact()
-lista_wizytowek2[0].contact()
-print(lista_wizytowek2[0].label_length())
+def create_contacts(card_type, ammount):
+    name = fake.name()
+    address = fake.address()
+    email = fake.email()
+    home_phone = fake.phone_number()
+    company = fake.company()
+    job = fake.job()
+    work_phone = fake.phone_number()
+    if card_type == BusinessContact:
+        return [card_type(company, job, work_phone, name, address, email, home_phone) for _ in range(ammount)]
+    elif card_type == BaseContact:
+        return [card_type(name, address, email, home_phone) for _ in range(ammount)]
