@@ -13,10 +13,9 @@ def is_prime(n):
 def sum_for_list(lst_to_check):
     primes_in_range, result, previous_prime = [], [], 0
     primes_in_range  = [num for num in range(2, max([abs(num) for num in lst_to_check]) + 1) if is_prime(num)]
-    all_poss = [[prime, num] for prime in primes_in_range for num in lst_to_check if num % prime == 0]
-    all_poss2 = enumerate(([prime, num] for prime in primes_in_range for num in lst_to_check if num % prime == 0))
-    print(sys.getsizeof(all_poss), sys.getsizeof(all_poss2), type(all_poss), type(all_poss2))
-
+    #all_poss = [[prime, num] for prime in primes_in_range for num in lst_to_check if num % prime == 0]
+    all_poss2 = ([prime, num] for prime in primes_in_range for num in lst_to_check if num % prime == 0)
+    print(sys.getsizeof(all_poss2), type(all_poss2))
 
     for i, j in all_poss2:
         if not result:
