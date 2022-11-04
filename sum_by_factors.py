@@ -1,4 +1,7 @@
 import math
+import numpy as np
+
+x = np.array([[1, 2, 3], [4, 5, 6]], np.int32)
 
 
 def is_prime(n):
@@ -13,10 +16,10 @@ def is_prime(n):
 
 def my_generator(lst_to_check):
     primes_in_range = [num for num in range(2, max([abs(num) for num in lst_to_check]) + 1) if is_prime(num)]
-    all_possibilities = ([prime, num] for prime in primes_in_range for num in lst_to_check if num % prime == 0)
-    all_possibilities2 = map(lambda x: [x[0],x[1]]if  x[1] % x[0] == 0 and x[1] != 0 else None,
+    all_possibilities = np.array([prime, num] for prime in primes_in_range for num in lst_to_check if num % prime == 0)
+    all_possibilities2 = map(lambda x: [x[0], x[1]] if x[1] % x[0] == 0 and x[1] != 0 else None,
                              ([prime, num] for prime in primes_in_range for num in lst_to_check if num % prime == 0))
-    for j in all_possibilities2:
+    for j in all_possibilities:
         if j is not None:
             yield j
 
