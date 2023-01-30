@@ -1,2 +1,2 @@
-def convert_to_decimal():
+def convert_to_decimal(number):
     pass
