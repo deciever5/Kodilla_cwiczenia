@@ -1,11 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="4803a4fb-552c-48fd-b052-944420eab872" name="Changes" comment="sorting project files properly" />
+    <list default="true" id="96f66bef-b5e7-45c1-a88e-a18b1b6fd55d" name="Changes" comment="unittests for palindrom.py">
+      <change afterPath="$PROJECT_DIR$/.idea/csv-editor.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/prime_factors/prime_factors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Magazyn.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/adress_book.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/goods.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/palindrom.py" beforeDir="false" afterPath="$PROJECT_DIR$/palindrom/palindrom.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/palindrom_py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pyramid.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sold_goods.csv" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Rebase.Settings">
+    <option name="NEW_BASE" value="origin/test" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -13,51 +37,40 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2GGS0qtNQdXJa52qbA2Awhpw1UN" />
+  <component name="ProjectId" id="2L2GXbQI20dfhvPxVzf02nTnqex" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/MQ/PycharmProjects/Kodilla_cwiczenia&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\MQ\PycharmProjects\Kodilla_cwiczenia" />
-      <recent name="C:\Users\MQ\PycharmProjects\Kodilla_cwiczenia\shopping_list" />
-      <recent name="C:\Users\MQ\PycharmProjects\Kodilla_cwiczenia\warehouse" />
-      <recent name="C:\Users\MQ\PycharmProjects\Kodilla_cwiczenia\simple_calculator" />
-      <recent name="C:\Users\MQ\PycharmProjects\Kodilla_cwiczenia\adress_book" />
+      <recent name="C:\Users\MaKuni\kodilla\learning-git\Kodilla_cwiczenia\palindrom" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="4803a4fb-552c-48fd-b052-944420eab872" name="Changes" comment="" />
-      <created>1666013206314</created>
+      <changelist id="96f66bef-b5e7-45c1-a88e-a18b1b6fd55d" name="Changes" comment="" />
+      <created>1675061804925</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1666013206314</updated>
+      <updated>1675061804925</updated>
     </task>
-    <task id="LOCAL-00001" summary="sorting project files properly">
-      <created>1667584698361</created>
+    <task id="LOCAL-00001" summary="unittests for palindrom.py">
+      <created>1675063711817</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1667584698361</updated>
+      <updated>1675063711817</updated>
     </task>
-    <task id="LOCAL-00002" summary="sorting project files properly">
-      <created>1667587883999</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1667587883999</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -65,26 +78,14 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="origin/main" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="sorting project files properly" />
-    <option name="LAST_COMMIT_MESSAGE" value="sorting project files properly" />
+    <MESSAGE value="unittests for palindrom.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="unittests for palindrom.py" />
   </component>
 </project>
