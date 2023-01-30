@@ -25,6 +25,10 @@ class PrimeFactorsTest(unittest.TestCase):
         self.assertEqual(prime_factors(33), [3,11])
         self.assertEqual(prime_factors(325), [5,5,13])
 
+    def test_border_cases(self):
+        self.assertEqual(prime_factors(0),[])
+        self.assertEqual(prime_factors(1),[])
+
 
 
 
