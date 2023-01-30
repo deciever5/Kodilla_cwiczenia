@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96f66bef-b5e7-45c1-a88e-a18b1b6fd55d" name="Changes" comment="TDD training - testing finished">
-      <change beforePath="$PROJECT_DIR$/prime_factors/prime_factors.py" beforeDir="false" afterPath="$PROJECT_DIR$/prime_factors/prime_factors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prime_factors/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/prime_factors/test.py" afterDir="false" />
+    <list default="true" id="96f66bef-b5e7-45c1-a88e-a18b1b6fd55d" name="Changes" comment="Test integration training - roman numerals converter initial commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +15,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Python Script" />
         <option value="Python Unit Test" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -99,7 +98,21 @@
       <option name="project" value="LOCAL" />
       <updated>1675117270730</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="TDD training - testing finished">
+      <created>1675117328116</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1675117328116</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Test integration training - roman numerals converter initial commit">
+      <created>1675117567229</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1675117567229</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -121,6 +134,7 @@
     <MESSAGE value="TDD training - adding test for calculadion or factors" />
     <MESSAGE value="TDD training - adding test for border cases" />
     <MESSAGE value="TDD training - testing finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="TDD training - testing finished" />
+    <MESSAGE value="Test integration training - roman numerals converter initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test integration training - roman numerals converter initial commit" />
   </component>
 </project>

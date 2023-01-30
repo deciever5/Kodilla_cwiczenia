@@ -1,9 +1,10 @@
 import unittest
+from convert_to_decimal import convert_to_decimal as ctd
 
 
-class MyTestCase(unittest.TestCase):
-    def test_something(self):
-        self.assertEqual(True, False)  # add assertion here
+class ConvertToDecimalTest(unittest.TestCase):
+    def test_function_exists(self):
+        self.assertTrue(callable(ctd))
 
 
 if __name__ == '__main__':
