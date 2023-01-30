@@ -12,5 +12,8 @@ class ConvertToDecimalTest(unittest.TestCase):
     def test_return_type(self):
         self.assertEqual(type(ctd('X')), int)
 
+    def test_input_type(self):
+        self.assertRaises(ValueError, ctd, 10)
+
 if __name__ == '__main__':
     unittest.main()
