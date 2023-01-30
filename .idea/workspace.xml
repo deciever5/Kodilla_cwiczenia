@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96f66bef-b5e7-45c1-a88e-a18b1b6fd55d" name="Changes" comment="TDD training - testing input and output">
-      <change afterPath="$PROJECT_DIR$/prime_factors/test.py" afterDir="false" />
+    <list default="true" id="96f66bef-b5e7-45c1-a88e-a18b1b6fd55d" name="Changes" comment="TDD training - split int test  and function file , added test for prime numbers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Kalkulator.py" beforeDir="false" afterPath="$PROJECT_DIR$/Kalkulator.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prime_factors/prime_factors.py" beforeDir="false" afterPath="$PROJECT_DIR$/prime_factors/prime_factors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prime_factors/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/prime_factors/test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +80,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675113577284</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="TDD training - split int test  and function file , added test for prime numbers">
+      <created>1675115342150</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1675115342150</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -97,6 +105,7 @@
     <MESSAGE value="unittests for palindrom.py" />
     <MESSAGE value="TDD training - adding function exist test" />
     <MESSAGE value="TDD training - testing input and output" />
-    <option name="LAST_COMMIT_MESSAGE" value="TDD training - testing input and output" />
+    <MESSAGE value="TDD training - split int test  and function file , added test for prime numbers" />
+    <option name="LAST_COMMIT_MESSAGE" value="TDD training - split int test  and function file , added test for prime numbers" />
   </component>
 </project>
