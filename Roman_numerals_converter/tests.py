@@ -15,5 +15,17 @@ class ConvertToDecimalTest(unittest.TestCase):
     def test_input_type(self):
         self.assertRaises(ValueError, ctd, 10)
 
+    def test_simple_conversion(self):
+        self.assertEqual(ctd('X'), 10)
+        self.assertEqual(ctd('L'), 50)
+        self.assertEqual(ctd('C'), 100)
+
+    def test_adv_conversion(self):
+        self.assertEqual(ctd('XLV'), 45)
+        self.assertEqual(ctd('CMMLVIII'), 1958)
+        self.assertEqual(ctd('CDXXXII'), 432)
+
+
+
 if __name__ == '__main__':
     unittest.main()
