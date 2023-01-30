@@ -9,7 +9,8 @@ class ConvertToDecimalTest(unittest.TestCase):
     def test_input_exists(self):
         self.assertRaises(TypeError, ctd)
 
-
+    def test_return_type(self):
+        self.assertEqual(type(ctd('X')), int)
 
 if __name__ == '__main__':
     unittest.main()
