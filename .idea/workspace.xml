@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96f66bef-b5e7-45c1-a88e-a18b1b6fd55d" name="Changes" comment="TDD training - split int test  and function file , added test for prime numbers">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Kalkulator.py" beforeDir="false" afterPath="$PROJECT_DIR$/Kalkulator.py" afterDir="false" />
+    <list default="true" id="96f66bef-b5e7-45c1-a88e-a18b1b6fd55d" name="Changes" comment="TDD training - testing finished">
       <change beforePath="$PROJECT_DIR$/prime_factors/prime_factors.py" beforeDir="false" afterPath="$PROJECT_DIR$/prime_factors/prime_factors.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prime_factors/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/prime_factors/test.py" afterDir="false" />
     </list>
@@ -87,7 +85,21 @@
       <option name="project" value="LOCAL" />
       <updated>1675115342150</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="TDD training - adding test for calculadion or factors">
+      <created>1675116768086</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1675116768086</updated>
+    </task>
+    <task id="LOCAL-00006" summary="TDD training - adding test for border cases">
+      <created>1675117270730</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1675117270730</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -106,6 +118,9 @@
     <MESSAGE value="TDD training - adding function exist test" />
     <MESSAGE value="TDD training - testing input and output" />
     <MESSAGE value="TDD training - split int test  and function file , added test for prime numbers" />
-    <option name="LAST_COMMIT_MESSAGE" value="TDD training - split int test  and function file , added test for prime numbers" />
+    <MESSAGE value="TDD training - adding test for calculadion or factors" />
+    <MESSAGE value="TDD training - adding test for border cases" />
+    <MESSAGE value="TDD training - testing finished" />
+    <option name="LAST_COMMIT_MESSAGE" value="TDD training - testing finished" />
   </component>
 </project>
