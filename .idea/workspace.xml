@@ -4,17 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96f66bef-b5e7-45c1-a88e-a18b1b6fd55d" name="Changes" comment="unittests for palindrom.py">
-      <change afterPath="$PROJECT_DIR$/.idea/csv-editor.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/prime_factors/prime_factors.py" afterDir="false" />
+    <list default="true" id="96f66bef-b5e7-45c1-a88e-a18b1b6fd55d" name="Changes" comment="TDD training - testing input and output">
+      <change afterPath="$PROJECT_DIR$/prime_factors/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Magazyn.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/adress_book.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/goods.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/palindrom.py" beforeDir="false" afterPath="$PROJECT_DIR$/palindrom/palindrom.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/palindrom_py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pyramid.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sold_goods.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prime_factors/prime_factors.py" beforeDir="false" afterPath="$PROJECT_DIR$/prime_factors/prime_factors.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +18,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="Python Unit Test" />
       </list>
     </option>
   </component>
@@ -46,7 +40,8 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true"
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "dart.analysis.tool.window.visible": "false"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -70,7 +65,21 @@
       <option name="project" value="LOCAL" />
       <updated>1675063711817</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="TDD training - adding function exist test">
+      <created>1675110971586</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1675110971586</updated>
+    </task>
+    <task id="LOCAL-00003" summary="TDD training - testing input and output">
+      <created>1675113577284</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1675113577284</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -86,6 +95,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="unittests for palindrom.py" />
-    <option name="LAST_COMMIT_MESSAGE" value="unittests for palindrom.py" />
+    <MESSAGE value="TDD training - adding function exist test" />
+    <MESSAGE value="TDD training - testing input and output" />
+    <option name="LAST_COMMIT_MESSAGE" value="TDD training - testing input and output" />
   </component>
 </project>
