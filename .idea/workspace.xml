@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b7c840e1-a5b5-4330-bc5f-3900e3db96f4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Kodilla_cwiczenia.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Kodilla_cwiczenia.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/csv-editor.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="b7c840e1-a5b5-4330-bc5f-3900e3db96f4" name="Changes" comment="Test integration training - quiz app from cookicutter initial commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz/app.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,42 +34,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/MaKuni/kodilla/learning-git/Kodilla_cwiczenia/quiz_app/quiz_app/app.py&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "last_opened_file_path": "C:/Users/MaKuni/kodilla/learning-git/Kodilla_cwiczenia/quiz/quiz/app.py"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\MaKuni\kodilla\learning-git\Kodilla_cwiczenia\palindrom" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.app">
-    <configuration name="app" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
-      <module name="Kodilla_cwiczenia" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/quiz_app/quiz_app" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/quiz_app/quiz_app/app.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.quiz_app">
     <configuration name="quiz_app" type="PythonConfigurationType" factoryName="Python">
       <module name="Kodilla_cwiczenia" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -83,11 +58,11 @@
       </envs>
       <option name="SDK_HOME" value="C:\Users\MaKuni\AppData\Local\Programs\Python\Python311\python.exe" />
       <option name="SDK_NAME" value="Python 3.11" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/quiz_app" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/quiz/quiz" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/quiz_app/quiz_app" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/quiz/quiz/app.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -139,7 +114,6 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.app" />
       <item itemvalue="Python.quiz_app" />
       <item itemvalue="Python tests.Python tests for " />
       <item itemvalue="Python tests.Python tests for tests.ConvertToDecimalTest.test_adv_conversion" />
@@ -252,7 +226,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675122899866</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Test integration training - quiz app from cookicutter initial commit">
+      <created>1675152387033</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1675152387033</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -280,6 +261,7 @@
     <MESSAGE value="Test integration training - test if output is int" />
     <MESSAGE value="Test integration training - test if input is string" />
     <MESSAGE value="Test integration training - test for advanced cases" />
-    <option name="LAST_COMMIT_MESSAGE" value="Test integration training - test for advanced cases" />
+    <MESSAGE value="Test integration training - quiz app from cookicutter initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test integration training - quiz app from cookicutter initial commit" />
   </component>
 </project>
