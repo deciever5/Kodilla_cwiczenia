@@ -1,0 +1,6 @@
+[run]
+source = quiz
+omit = 
+    tests/*
+    autoapp.py
+
