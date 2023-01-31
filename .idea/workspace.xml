@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="96f66bef-b5e7-45c1-a88e-a18b1b6fd55d" name="Changes" comment="Test integration training - test if input is string">
+    <list default="true" id="96f66bef-b5e7-45c1-a88e-a18b1b6fd55d" name="Changes" comment="Test integration training - test for advanced cases">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Roman_numerals_converter/convert_to_decimal.py" beforeDir="false" afterPath="$PROJECT_DIR$/Roman_numerals_converter/convert_to_decimal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Kalkulator.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Roman_numerals_converter/convert_to_roman.py" beforeDir="false" afterPath="$PROJECT_DIR$/Roman_numerals_converter/convert_to_roman.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Roman_numerals_converter/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/Roman_numerals_converter/tests.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,7 +50,7 @@
       <recent name="C:\Users\MaKuni\kodilla\learning-git\Kodilla_cwiczenia\palindrom" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for tests.ConvertToDecimalTest.test_adv_conversion">
+  <component name="RunManager">
     <configuration name="Python tests for tests.ConvertToDecimalTest.test_adv_conversion" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="Kodilla_cwiczenia" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -75,6 +76,20 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;tests.ConvertToDecimalTest.test_simple_conversion&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Python tests for " type="tests" factoryName="Autodetect" nameIsGenerated="true">
+      <module name="Kodilla_cwiczenia" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Roman_numerals_converter" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -178,7 +193,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675122329364</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Test integration training - test for advanced cases">
+      <created>1675122899866</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1675122899866</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -205,6 +227,7 @@
     <MESSAGE value="Test integration training - test if function has input" />
     <MESSAGE value="Test integration training - test if output is int" />
     <MESSAGE value="Test integration training - test if input is string" />
-    <option name="LAST_COMMIT_MESSAGE" value="Test integration training - test if input is string" />
+    <MESSAGE value="Test integration training - test for advanced cases" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test integration training - test for advanced cases" />
   </component>
 </project>
