@@ -6,6 +6,76 @@
   <component name="ChangeListManager">
     <list default="true" id="b7c840e1-a5b5-4330-bc5f-3900e3db96f4" name="Changes" comment="Test integration training - quiz app from cookicutter initial commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/.coveragerc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/.env.example" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/.eslintrc.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/.github/dependabot.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/.github/workflows/lint.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/Dockerfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/Procfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/app.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/assets/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/assets/img/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/assets/img/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/assets/js/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/assets/js/plugins.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/assets/js/script.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/autoapp.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/docker-compose.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/migrations/README" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/migrations/alembic.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/migrations/env.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/migrations/script.py.mako" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/pyproject.toml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/quiz/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/quiz/app.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/quiz/commands.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/quiz/compat.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/quiz/database.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/quiz/extensions.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/quiz/public/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/quiz/public/forms.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/quiz/public/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/quiz/settings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/quiz/static/cache_manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/quiz/templates/401.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/quiz/templates/404.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/quiz/templates/500.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/quiz/templates/footer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/quiz/templates/layout.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/quiz/templates/nav.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/quiz/templates/public/about.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/quiz/templates/public/home.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/quiz/templates/public/register.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/quiz/templates/users/members.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/quiz/user/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/quiz/user/forms.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/quiz/user/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/quiz/user/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/quiz/utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/quiz/webpack/.gitkeep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/requirements.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/requirements/dev.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/requirements/prod.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/setup.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/shell_scripts/auto_pipenv.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/shell_scripts/supervisord_entrypoint.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/supervisord.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/supervisord_programs/gunicorn.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/tests/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/tests/conftest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/tests/factories.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/tests/settings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/tests/test_database.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/tests/test_forms.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/tests/test_functional.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/tests/test_models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/webpack.config.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,22 +99,28 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="2L2GXbQI20dfhvPxVzf02nTnqex" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "last_opened_file_path": "C:/Users/MaKuni/kodilla/learning-git/Kodilla_cwiczenia/quiz/quiz/app.py"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/MaKuni/kodilla/learning-git/Kodilla_cwiczenia/quiz/quiz/app.py&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;aDefault&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PythonContentEntriesConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\MaKuni\kodilla\learning-git\Kodilla_cwiczenia\quiz\quiz\templates\public" />
       <recent name="C:\Users\MaKuni\kodilla\learning-git\Kodilla_cwiczenia\palindrom" />
     </key>
   </component>
@@ -233,7 +309,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675152387033</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Test integration training - quiz app from cookicutter initial commit">
+      <created>1675155130050</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1675155130050</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
