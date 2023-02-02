@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b7c840e1-a5b5-4330-bc5f-3900e3db96f4" name="Changes" comment="Test integration training - quiz app total rework">
-      <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
+    <list default="true" id="b7c840e1-a5b5-4330-bc5f-3900e3db96f4" name="Changes" comment="Test integration training - login mechanism implemented">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quiz/quiz.py" beforeDir="false" afterPath="$PROJECT_DIR$/quiz/quiz.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quiz/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/quiz/templates/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quiz/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/quiz/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz/templates/quiz.html" beforeDir="false" afterPath="$PROJECT_DIR$/quiz/templates/quiz.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -294,7 +292,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675339460981</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Test integration training - login mechanism implemented">
+      <created>1675345007918</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1675345007918</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -324,6 +329,7 @@
     <MESSAGE value="Test integration training - test for advanced cases" />
     <MESSAGE value="Test integration training - quiz app from cookicutter initial commit" />
     <MESSAGE value="Test integration training - quiz app total rework" />
-    <option name="LAST_COMMIT_MESSAGE" value="Test integration training - quiz app total rework" />
+    <MESSAGE value="Test integration training - login mechanism implemented" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test integration training - login mechanism implemented" />
   </component>
 </project>

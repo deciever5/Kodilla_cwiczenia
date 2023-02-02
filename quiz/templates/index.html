@@ -36,20 +36,24 @@
 </header>
 
 <main>
-  <div class="container my-5">
-    <h1 class="text-center">Welcome to Quiz Web App</h1>
-      <p class="text-center">Logged in as {{current_user.username}}</p>
-    <p class="text-center">Start taking quizzes and see where you rank on the leaderboard!</p>
-  </div>
-  <div class="d-flex mx-auto col-12" >
-    {% block content %}
-    {% endblock %}
-  </div>
-{% with messages = get_flashed_messages() %}
-    {% for message in messages %}
-        {{ message }}
-    {% endfor %}
-{% endwith %}
+    <div class="container my-5">
+      <h1 class="text-center">Welcome to Quiz Web App</h1>
+        <p class="text-center">Start taking quizzes and see where you rank on the leaderboard!</p>
+        <br>
+            <div class="row justify-content-center text-center">
+                {% with messages = get_flashed_messages() %}
+                    {% for message in messages %}
+                        {{ message }}
+                    {% endfor %}
+                {% endwith %}
+            </div>
+
+    </div>
+    <div class="d-flex mx-auto col-12" >
+      {% block content %}
+      {% endblock %}
+    </div>
+
 </main>
 
 <footer class="bg-light py-3">

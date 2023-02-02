@@ -122,15 +122,11 @@ def login():
         email = request.form['email']
         password = request.form['password']
         user = User.query.filter_by(email=email).first()
-        print(user.username, user.password, user.email)
-        print(user.password, password)
         if user and (user.password == password):
             login_user(user)  # log the user in
             flash(f"You are logged in as {user.username}", "success")
-            print(user)
             return redirect(url_for('index'))
         else:
-            print("cos zjebales")
             flash("Wrong email or password", "danger")
     return render_template('login.html')
 
