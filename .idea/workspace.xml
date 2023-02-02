@@ -4,87 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b7c840e1-a5b5-4330-bc5f-3900e3db96f4" name="Changes" comment="Test integration training - quiz app from cookicutter initial commit">
-      <change afterPath="$PROJECT_DIR$/quiz/templates/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/quiz/templates/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/quiz/templates/quiz.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/quiz/templates/ranking.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/quiz/templates/register.html" afterDir="false" />
+    <list default="true" id="b7c840e1-a5b5-4330-bc5f-3900e3db96f4" name="Changes" comment="Test integration training - quiz app total rework">
       <change beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pipfile.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/.coveragerc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/.env.example" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/.eslintrc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/.github/dependabot.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/.github/workflows/lint.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/Dockerfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/Procfile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/app.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/assets/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/assets/img/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/quiz/TODO.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/assets/img/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/assets/js/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/assets/js/plugins.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/assets/js/script.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/autoapp.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/docker-compose.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/migrations/README" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/migrations/alembic.ini" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/migrations/env.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/migrations/script.py.mako" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/package-lock.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/package.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/pyproject.toml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/quiz_app/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/quiz_app/app.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/quiz_app/commands.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/quiz_app/compat.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/quiz_app/database.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/quiz_app/extensions.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/quiz_app/public/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/quiz_app/public/forms.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/quiz_app/public/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/quiz_app/settings.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/quiz_app/static/cache_manifest.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/quiz_app/templates/401.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/quiz_app/templates/404.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/quiz_app/templates/500.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/quiz_app/templates/footer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/quiz_app/templates/layout.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/quiz_app/templates/nav.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/quiz_app/templates/public/about.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/quiz_app/templates/public/home.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/quiz_app/templates/public/register.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/quiz_app/templates/users/members.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/quiz_app/user/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/quiz_app/user/forms.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/quiz_app/user/models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/quiz_app/user/views.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/quiz_app/utils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/quiz_app/webpack/.gitkeep" beforeDir="false" afterPath="$PROJECT_DIR$/quiz/quiz.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/requirements.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/requirements/dev.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/requirements/prod.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/setup.cfg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/shell_scripts/auto_pipenv.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/shell_scripts/supervisord_entrypoint.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/supervisord.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/supervisord_programs/gunicorn.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/tests/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/tests/conftest.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/tests/factories.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/tests/settings.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/tests/test_database.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/tests/test_forms.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/tests/test_functional.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/tests/test_models.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/quiz_app/webpack.config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/quiz.py" beforeDir="false" afterPath="$PROJECT_DIR$/quiz/quiz.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/quiz/templates/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/quiz/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/templates/quiz.html" beforeDir="false" afterPath="$PROJECT_DIR$/quiz/templates/quiz.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,6 +31,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -354,7 +287,14 @@
       <option name="project" value="LOCAL" />
       <updated>1675170510281</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Test integration training - quiz app total rework">
+      <created>1675339460981</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1675339460981</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -383,6 +323,7 @@
     <MESSAGE value="Test integration training - test if input is string" />
     <MESSAGE value="Test integration training - test for advanced cases" />
     <MESSAGE value="Test integration training - quiz app from cookicutter initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Test integration training - quiz app from cookicutter initial commit" />
+    <MESSAGE value="Test integration training - quiz app total rework" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test integration training - quiz app total rework" />
   </component>
 </project>

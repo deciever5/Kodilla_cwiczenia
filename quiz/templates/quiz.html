@@ -1,29 +1,33 @@
 {% extends "index.html" %}
 
 {% block content %}
-<div class="container mt-5">
-  <h1 class="text-center">Quiz</h1>
-  <div class="row justify-content-center">
-    <div class="container">
-  <div class="row">
-    {% for question in questions %}
-      <div class="col-3">
-        <div class="form-group">
-          <label for="{{ question.question }}">{{ question.question|safe }}</label>
-          <div class="form-check">
-            {% for answer in question.incorrect_answers + [question.correct_answer] %}
-              <input class="form-check-input" type="radio" name="{{ question.question }}" id="{{ answer }}" value="{{ answer }}">
-              <label class="form-check-label" for="{{ answer }}">{{ answer|safe }}</label><br>
-            {% endfor %}
-          </div>
+
+
+<form action="{{ url_for('quiz_results') }}" method="post">
+      <div class="container justify-content-center">
+        <div class="row">
+          {% for i in range(0, questions|length, 3) %}
+            <div class="col-3">
+              {% for question in questions[i:i+3] %}
+                <div class="form-group">
+                  <label for="{{ question.question }}">{{ question.question|safe }}</label>
+                  <div class="form-check">
+                    {% for answer in question.incorrect_answers + [question.correct_answer] %}
+                      <input class="form-check-input" type="radio" name="{{ question.question }}" id="{{ answer }}" value="{{ answer }}">
+                      <label class="form-check-label" for="{{ answer }}">{{ answer|safe }}</label><br>
+                    {% endfor %}
+                  </div>
+                </div>
+              {% endfor %}
+            </div>
+          {% endfor %}
         </div>
       </div>
-    {% endfor %}
+
+    <div class="form-group text-center mt-5">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
   </div>
-</div>
-  </div>
-  <div class="row justify-content-center">
-    <input type="submit" value="Submit Quiz">
-  </div>
-</div>
+</form>
+
 {% endblock %}

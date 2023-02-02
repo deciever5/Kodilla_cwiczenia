@@ -1,9 +1,8 @@
 import requests
 from flask import Flask, render_template, request, redirect, url_for, flash
-from flask_login import LoginManager, logout_user, current_user, login_required
+from flask_login import LoginManager, logout_user, current_user, login_required, login_user
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import Column, Integer, String
-from werkzeug.security import check_password_hash
+from sqlalchemy import Column, Integer, String, Boolean
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///quiz_web_app.db'
@@ -17,11 +16,11 @@ login_manager.login_view = "login"
 
 class User(db.Model):
     __tablename__ = 'users'
-
     id = Column(Integer, primary_key=True)
     username = Column(String(30), unique=True)
     email = Column(String(50), unique=True)
     password = Column(String(100))
+    is_active = Column(Boolean, default=False)
 
     def __repr__(self):
         return "<User(username='%s', email='%s')>" % (self.username, self.email)
@@ -57,7 +56,15 @@ def load_user(user_id):
 
 @app.route('/')
 def index():
+
     return render_template('index.html')
+
+
+@app.route('/quiz_results', methods=['POST'])
+def quiz_results():
+    results = request.form
+    print(results)  # process the results and store in database
+    return render_template('index.html', results=results)
 
 
 @app.route('/quiz', methods=['GET'])
@@ -115,10 +122,15 @@ def login():
         email = request.form['email']
         password = request.form['password']
         user = User.query.filter_by(email=email).first()
-        if user and check_password_hash(user.password, password):
-            flash(f"You are logged in as {user.email}", "success")
+        print(user.username, user.password, user.email)
+        print(user.password, password)
+        if user and (user.password == password):
+            login_user(user)  # log the user in
+            flash(f"You are logged in as {user.username}", "success")
+            print(user)
             return redirect(url_for('index'))
         else:
+            print("cos zjebales")
             flash("Wrong email or password", "danger")
     return render_template('login.html')
 
@@ -146,7 +158,11 @@ def register():
         new_user = User(username=username, email=email, password=password)
         db.session.add(new_user)
         db.session.commit()
-
+        user = User.query.filter_by(username=username).first()
+        if user is not None:
+            print(user)
+        else:
+            print('nie zarejestrowano ')
         return redirect(url_for('index'))
 
     return render_template('register.html')

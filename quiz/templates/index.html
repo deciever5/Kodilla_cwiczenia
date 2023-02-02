@@ -11,6 +11,7 @@
 <header>
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Quiz Web App</a>
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -37,12 +38,18 @@
 <main>
   <div class="container my-5">
     <h1 class="text-center">Welcome to Quiz Web App</h1>
+      <p class="text-center">Logged in as {{current_user.username}}</p>
     <p class="text-center">Start taking quizzes and see where you rank on the leaderboard!</p>
   </div>
   <div class="d-flex mx-auto col-12" >
     {% block content %}
     {% endblock %}
   </div>
+{% with messages = get_flashed_messages() %}
+    {% for message in messages %}
+        {{ message }}
+    {% endfor %}
+{% endwith %}
 </main>
 
 <footer class="bg-light py-3">
