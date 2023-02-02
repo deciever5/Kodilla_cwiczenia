@@ -1,6 +1,0 @@
-[run]
-source = quiz_app
-omit = 
-    tests/*
-    autoapp.py
-
