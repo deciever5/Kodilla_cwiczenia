@@ -1,33 +1,53 @@
 {% extends "index.html" %}
 
 {% block content %}
+  <div class="container ">
+    <div class="row">
+      <div class=" justify-content-center row text-center col-12">
+            <form action="{{ url_for('quiz') }}"  class= "row" method="post">
+              <select name="difficulty">
+                <option value="easy">Easy</option>
+                <option value="medium">Medium</option>
+                <option value="hard">Hard</option>
+              </select>
+              <input type="submit" value="Change difficulty">
+            </form>
 
-
-<form action="{{ url_for('quiz_results') }}" method="post">
-      <div class="container justify-content-center">
-        <div class="row">
-          {% for i in range(0, questions|length, 3) %}
-            <div class="col-3">
-              {% for question in questions[i:i+3] %}
-                <div class="form-group">
-                  <label for="{{ question.question }}">{{ question.question|safe }}</label>
-                  <div class="form-check">
-                    {% for answer in question.incorrect_answers + [question.correct_answer] %}
-                      <input class="form-check-input" type="radio" name="{{ question.question }}" id="{{ answer }}" value="{{ answer }}">
-                      <label class="form-check-label" for="{{ answer }}">{{ answer|safe }}</label><br>
-                    {% endfor %}
-                  </div>
-                </div>
-              {% endfor %}
-            </div>
-          {% endfor %}
-        </div>
       </div>
-
-    <div class="form-group text-center mt-5">
-      <button type="submit" class="btn btn-primary">Submit</button>
     </div>
-  </div>
-</form>
+<div class="row">
+      <div class="mt-2 justify-content-center row text-center col-12">
+            <p>This quiz is difficulty is {{difficulty}}</p>
+      </div>
+    </div>
+<div class="row mt-2 ">
+        <form action="{{ url_for('submit') }}" method="post">
+              <div class="container justify-content-center">
+                <div class="row">
 
+                  {% for i in range(0, questions|length, 3) %}
+                    <div class="col-3">
+                      {% for question in questions[i:i+3] %}
+                        <div class="form-group">
+                          <label for="{{ question.question }}">{{ question.question|safe }}</label>
+                          <div class="form-check">
+                            {% for answer in question.incorrect_answers + [question.correct_answer] %}
+                              <input class="form-check-input" type="radio" name="{{ question.question }}" id="{{ answer }}" value="{{ answer }}">
+                              <label class="form-check-label" for="{{ answer }}">{{ answer|safe }}</label><br>
+                            {% endfor %}
+                          </div>
+                        </div>
+                      {% endfor %}
+                    </div>
+                  {% endfor %}
+                </div>
+              </div>
+
+
+          <div class="form-group text-center mt-5">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+    </form>
+</div>
+      </div>
 {% endblock %}

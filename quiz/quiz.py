@@ -1,5 +1,5 @@
 import requests
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 from flask_login import LoginManager, logout_user, current_user, login_required, login_user
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, Integer, String, Boolean
@@ -56,56 +56,53 @@ def load_user(user_id):
 
 @app.route('/')
 def index():
-
     return render_template('index.html')
 
 
-@app.route('/quiz_results', methods=['POST'])
-def quiz_results():
-    results = request.form
-    print(results)  # process the results and store in database
-    return render_template('index.html', results=results)
-
-
-@app.route('/quiz', methods=['GET'])
+@app.route('/quiz', methods=['GET','POST'])
 def quiz():
-    # Define the API endpoint
+    difficulty = 'easy'
     endpoint = "https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple"
-
+    if request.method == 'POST':
+        difficulty = request.form.get('difficulty')
+        endpoint = f'https://opentdb.com/api.php?amount=10&difficulty={difficulty}&type=multiple'
     # Make a request to the API
     response = requests.get(endpoint)
     data = response.json()
-
     # Extract the questions from the API response
     questions = data['results']
-
-    return render_template('quiz.html', questions=questions)
+    session['questions'] = questions
+    return render_template('quiz.html', questions=questions, difficulty=difficulty)
 
 
 @app.route("/submit", methods=["POST"])
 def submit():
-    name = request.form.get("name")
-    user = User.query.filter_by(name=name).first()
-    if not user:
-        user = User(name=name)
-        db.session.add(user)
-        db.session.commit()
-
-    answers = []
-    for key in request.form:
-        if key != "name":
-            answers.append(Answer(question=key, answer=request.form[key], user_id=user.id))
-
+    # Get the answers from the form data
+    quiz = request.form
+    phrases = session['questions']
+    for phrase in phrases:
+        print(phrase.get('question'), phrase.get('correct_answer'))
+    # print(correct_anwsers)
+    # Initialize a score counter
     score = 0
-    for question, correct_answer in questions:
-        user_answer = [a.answer for a in answers if a.question == question]
-        if user_answer and user_answer[0] == correct_answer:
-            score += 1
+    # # Iterate over the answers and add 1 to the score for each correct answer
+    for (question, answer) in quiz.items():
+        # print(question, answer)
+        pass
+    #  correct_answer = Question.query.get(question_id).correct_answer
+    #     if answer == correct_answer:
+    #         score += 1
+    #
+    # # Get the current user's ID
+    # user_id = session.get("user_id")
+    #
+    # # Create a new Score object and add it to the database
+    # score = Score(score=score, user_id=user_id)
+    # db.session.add(score)
+    # db.session.commit()
 
-    db.session.add(Score(score=score, user_id=user.id))
-    db.session.commit()
-
-    return "Score: {}".format(score)
+    # Redirect the user to the quiz results page
+    return redirect(url_for("index"))
 
 
 @app.route('/ranking')

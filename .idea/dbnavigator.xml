@@ -13,7 +13,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="c0057869-b955-44ce-8b96-f2e66cc2f825">
-      <console name="Connection" type="STANDARD" schema="" session="Main"><![CDATA[FROM users SELECT *]]></console>
+      <console name="Connection" type="STANDARD" schema="main" session="Main"><![CDATA[FROM users SELECT *]]></console>
     </connection>
     <connection id="9ff092d2-3f84-41df-bd9a-f8dd51406c89">
       <console name="Connection 1" type="STANDARD" schema="main" session="Main"><![CDATA[SELECT * FROM users]]></console>
@@ -57,7 +57,7 @@
           <port value="" />
           <database value="" />
           <files>
-            <file path="C:\Users\MaKuni\kodilla\learning-git\Kodilla_cwiczenia\quiz_app\dev.db" schema="main" />
+            <file path="C:\Users\MaKuni\kodilla\learning-git\Kodilla_cwiczenia\quiz\instance\quiz_web_app.db" schema="main" />
           </files>
           <type value="NONE" />
           <user value="" />
