@@ -1,6 +1,6 @@
 import requests
 from flask import Flask, render_template, request, redirect, url_for, flash, session
-from flask_login import LoginManager, logout_user, current_user, login_required, login_user
+from flask_login import LoginManager, logout_user, current_user, login_required, login_user, UserMixin
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, Integer, String, Boolean
 
@@ -10,21 +10,36 @@ app.secret_key = 'secret_key'
 db = SQLAlchemy(app)
 
 login_manager = LoginManager(app)
-login_manager.login_message = "Please log in to access this page."
+login_manager.init_app(app)
 login_manager.login_view = "login"
 
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = Column(Integer, primary_key=True)
     username = Column(String(30), unique=True)
     email = Column(String(50), unique=True)
     password = Column(String(100))
-    is_active = Column(Boolean, default=False)
 
-    def __repr__(self):
-        return "<User(username='%s', email='%s')>" % (self.username, self.email)
 
+    def is_active(self):
+        """True, as all users are active."""
+        return True
+
+    def get_id(self):
+        """Return the email address to satisfy Flask-Login's requirements."""
+        return self.email
+
+    def is_authenticated(self):
+        """Return True if the user is authenticated."""
+        return self.authenticated
+
+    def is_anonymous(self):
+        """False, as anonymous users aren't supported."""
+        return False
 
 class Answer(db.Model):
     __tablename__ = 'user_answers'
@@ -49,9 +64,7 @@ class Score(db.Model):
         return "<Score(user_id='%s', score='%s')>" % (self.user_id, self.score)
 
 
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
+
 
 
 @app.route('/')
@@ -59,7 +72,8 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/quiz', methods=['GET','POST'])
+@app.route('/quiz', methods=['GET', 'POST'])
+@login_required
 def quiz():
     difficulty = 'easy'
     endpoint = "https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple"
@@ -76,43 +90,42 @@ def quiz():
 
 
 @app.route("/submit", methods=["POST"])
+@login_required
 def submit():
     # Get the answers from the form data
-    quiz = request.form
+    user_quiz = request.form
     phrases = session['questions']
-    for phrase in phrases:
-        print(phrase.get('question'), phrase.get('correct_answer'))
-    # print(correct_anwsers)
-    # Initialize a score counter
     score = 0
-    # # Iterate over the answers and add 1 to the score for each correct answer
-    for (question, answer) in quiz.items():
-        # print(question, answer)
-        pass
-    #  correct_answer = Question.query.get(question_id).correct_answer
-    #     if answer == correct_answer:
-    #         score += 1
-    #
-    # # Get the current user's ID
-    # user_id = session.get("user_id")
-    #
+    for phrase in phrases:
+        for (question, answer) in user_quiz.items():
+            if phrase.get('question') == question and phrase.get('correct_answer') == answer:
+                print('Got one!')
+                score += 1
+
+    user_id = session.get("user_id")
+    print(user_id)
     # # Create a new Score object and add it to the database
-    # score = Score(score=score, user_id=user_id)
-    # db.session.add(score)
-    # db.session.commit()
+    score = Score(score=score, user_id=user_id)
+    db.session.add(score)
+    db.session.commit()
 
     # Redirect the user to the quiz results page
-    return redirect(url_for("index"))
+    return redirect(url_for("index", score=score))
 
 
 @app.route('/ranking')
 def ranking():
+
+    print(current_user)
     return render_template('ranking.html')
 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    print(current_user)
+
     if current_user.is_authenticated:
+        print(current_user)
         return redirect(url_for('index'))
 
     if request.method == 'POST':
@@ -122,6 +135,7 @@ def login():
         if user and (user.password == password):
             login_user(user)  # log the user in
             flash(f"You are logged in as {user.username}", "success")
+            print(current_user)
             return redirect(url_for('index'))
         else:
             flash("Wrong email or password", "danger")
