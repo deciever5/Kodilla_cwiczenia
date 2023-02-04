@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b7c840e1-a5b5-4330-bc5f-3900e3db96f4" name="Changes" comment="Test integration training - quiz difficulty introduced">
+    <list default="true" id="96f66bef-b5e7-45c1-a88e-a18b1b6fd55d" name="Changes" comment="Test integration training - building quiz site initial commit">
+      <change afterPath="$PROJECT_DIR$/quiz/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Kodilla_cwiczenia.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/quiz/quiz.py" beforeDir="false" afterPath="$PROJECT_DIR$/quiz/quiz.py" afterDir="false" />
     </list>
@@ -18,7 +25,6 @@
       <list>
         <option value="Python Unit Test" />
         <option value="Python Script" />
-        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -28,12 +34,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="LogFilters">
-    <option name="FILTER_ERRORS" value="false" />
-    <option name="FILTER_WARNINGS" value="false" />
-    <option name="FILTER_INFO" value="true" />
-    <option name="FILTER_DEBUG" value="true" />
-    <option name="CUSTOM_FILTER" />
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="8f497416-4d90-4f0f-853d-1dd9f36f9bb6" />
+        <option name="url" value="https://github.com/deciever5/Kodilla_cwiczenia.git" />
+      </UrlAndAccount>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -46,51 +58,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/MaKuni/kodilla/learning-git/Kodilla_cwiczenia/quiz/quiz.py&quot;,
-    &quot;run.code.analysis.last.selected.profile&quot;: &quot;aDefault&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PythonContentEntriesConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "last_opened_file_path": "C:/Users/MQ/PycharmProjects/Kodilla_cwiczenia/quiz/quiz.py",
+    "run.code.analysis.last.selected.profile": "aDefault",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\MaKuni\kodilla\learning-git\Kodilla_cwiczenia\quiz" />
-      <recent name="C:\Users\MaKuni\kodilla\learning-git\Kodilla_cwiczenia\quiz\templates" />
-      <recent name="C:\Users\MaKuni\kodilla\learning-git\Kodilla_cwiczenia\quiz\templates\quiz" />
       <recent name="C:\Users\MaKuni\kodilla\learning-git\Kodilla_cwiczenia\quiz\quiz\templates\public" />
       <recent name="C:\Users\MaKuni\kodilla\learning-git\Kodilla_cwiczenia\palindrom" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.quiz_app">
-    <configuration name="quiz_app" type="PythonConfigurationType" factoryName="Python">
+  <component name="RunManager" selected="Python.quiz">
+    <configuration name="quiz" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="Kodilla_cwiczenia" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
-      <option name="SDK_HOME" value="C:\Users\MaKuni\AppData\Local\Programs\Python\Python311\python.exe" />
+      <option name="SDK_HOME" value="C:\Users\MQ\AppData\Local\Programs\Python\Python311\python.exe" />
       <option name="SDK_NAME" value="Python 3.11" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/quiz" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="net.ashald.envfile">
-        <option name="IS_ENABLED" value="false" />
-        <option name="IS_SUBST" value="false" />
-        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
-        <option name="IS_IGNORE_MISSING_FILES" value="false" />
-        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
-        <ENTRIES>
-          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
-        </ENTRIES>
-      </EXTENSION>
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/quiz/quiz.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
@@ -100,7 +98,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for tests.ConvertToDecimalTest.test_adv_conversion" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for tests.ConvertToDecimalTest.test_adv_conversion" type="tests" factoryName="Autodetect" nameIsGenerated="true">
       <module name="Kodilla_cwiczenia" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -143,7 +141,7 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.quiz_app" />
+      <item itemvalue="Python.quiz" />
       <item itemvalue="Python tests.Python tests for " />
       <item itemvalue="Python tests.Python tests for tests.ConvertToDecimalTest.test_adv_conversion" />
       <item itemvalue="Python tests.Python tests for tests.ConvertToDecimalTest.test_simple_conversion" />
@@ -151,14 +149,13 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python tests.Python tests for tests.ConvertToDecimalTest.test_simple_conversion" />
-        <item itemvalue="Python tests.Python tests for tests.ConvertToDecimalTest.test_adv_conversion" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="b7c840e1-a5b5-4330-bc5f-3900e3db96f4" name="Changes" comment="" />
+      <changelist id="96f66bef-b5e7-45c1-a88e-a18b1b6fd55d" name="Changes" comment="Test integration training - building quiz site initial commit" />
       <created>1675061804925</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -269,49 +266,7 @@
       <option name="project" value="LOCAL" />
       <updated>1675155130050</updated>
     </task>
-    <task id="LOCAL-00016" summary="Test integration training - quiz app from cookicutter initial commit">
-      <created>1675170380237</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1675170380237</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Test integration training - quiz app from cookicutter initial commit">
-      <created>1675170510281</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1675170510281</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Test integration training - quiz app total rework">
-      <created>1675339460981</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1675339460981</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Test integration training - login mechanism implemented">
-      <created>1675345007918</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1675345007918</updated>
-    </task>
-    <task id="LOCAL-00020" summary="Test integration training - login mechanism implemented">
-      <created>1675346354342</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1675346354342</updated>
-    </task>
-    <task id="LOCAL-00021" summary="Test integration training - quiz difficulty introduced">
-      <created>1675414708289</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1675414708289</updated>
-    </task>
-    <option name="localTasksCounter" value="22" />
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -340,9 +295,6 @@
     <MESSAGE value="Test integration training - test if input is string" />
     <MESSAGE value="Test integration training - test for advanced cases" />
     <MESSAGE value="Test integration training - quiz app from cookicutter initial commit" />
-    <MESSAGE value="Test integration training - quiz app total rework" />
-    <MESSAGE value="Test integration training - login mechanism implemented" />
-    <MESSAGE value="Test integration training - quiz difficulty introduced" />
-    <option name="LAST_COMMIT_MESSAGE" value="Test integration training - quiz difficulty introduced" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test integration training - quiz app from cookicutter initial commit" />
   </component>
 </project>

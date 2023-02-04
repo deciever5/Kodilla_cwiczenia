@@ -1,8 +1,10 @@
 import requests
 from flask import Flask, render_template, request, redirect, url_for, flash, session
-from flask_login import LoginManager, logout_user, current_user, login_required, login_user, UserMixin
+from flask_login import LoginManager, logout_user, current_user, login_required, login_user
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import Column, Integer, String, Boolean
+from werkzeug.security import check_password_hash, generate_password_hash
+from flask_login import UserMixin
+from sqlalchemy import Integer, Column, String
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///quiz_web_app.db'
@@ -13,17 +15,18 @@ login_manager = LoginManager(app)
 login_manager.init_app(app)
 login_manager.login_view = "login"
 
+
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.get(int(user_id))
+    return User.query.get(user_id)
 
-class User(UserMixin, db.Model):
+
+class User(db.Model, UserMixin):
     __tablename__ = 'users'
     id = Column(Integer, primary_key=True)
     username = Column(String(30), unique=True)
     email = Column(String(50), unique=True)
     password = Column(String(100))
-
 
     def is_active(self):
         """True, as all users are active."""
@@ -40,6 +43,7 @@ class User(UserMixin, db.Model):
     def is_anonymous(self):
         """False, as anonymous users aren't supported."""
         return False
+
 
 class Answer(db.Model):
     __tablename__ = 'user_answers'
@@ -64,7 +68,60 @@ class Score(db.Model):
         return "<Score(user_id='%s', score='%s')>" % (self.user_id, self.score)
 
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
 
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        user = User.query.filter_by(email=email).first()
+        print(generate_password_hash(password))
+        print(user.password)
+        if user and (check_password_hash(user.password, password)):
+            login_user(user)  # log the user in
+            flash(f"You are logged in as {user.username}", "success")
+            return redirect(url_for('index'))
+        else:
+            flash("Wrong email or password", "danger")
+    return render_template('login.html')
+
+
+@app.route('/register', methods=['GET', 'POST'])
+def register():
+    if request.method == 'POST':
+        username = request.form['username']
+        email = request.form['email']
+        password = request.form['password']
+        confirm_password = request.form['confirm_password']
+        if password != confirm_password:
+            # Return an error message if the passwords do not match
+            flash("Passwords do not match", "danger")
+            return render_template('register.html')
+
+        # Use SQLAlchemy to add the new user to the database
+
+        new_user = User(
+            username=username,
+            email=email,
+            password=generate_password_hash(
+                password,
+                method='sha256'
+            )
+        )
+        db.session.add(new_user)
+        db.session.commit()
+        user = User.query.filter_by(username=username).first()
+        login_user(user)
+        if user is not None:
+            flash(f"You are registered as {username}", "success")
+        else:
+            flash("Not registered. Please try again", "danger")
+
+        return redirect(url_for('quiz'))
+
+    return render_template('register.html')
 
 
 @app.route('/')
@@ -115,31 +172,8 @@ def submit():
 
 @app.route('/ranking')
 def ranking():
-
     print(current_user)
     return render_template('ranking.html')
-
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    print(current_user)
-
-    if current_user.is_authenticated:
-        print(current_user)
-        return redirect(url_for('index'))
-
-    if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
-        user = User.query.filter_by(email=email).first()
-        if user and (user.password == password):
-            login_user(user)  # log the user in
-            flash(f"You are logged in as {user.username}", "success")
-            print(current_user)
-            return redirect(url_for('index'))
-        else:
-            flash("Wrong email or password", "danger")
-    return render_template('login.html')
 
 
 @app.route('/logout')
@@ -149,34 +183,7 @@ def logout():
     return redirect(url_for('index'))
 
 
-@app.route('/register', methods=['GET', 'POST'])
-def register():
-    if request.method == 'POST':
-        username = request.form['username']
-        email = request.form['email']
-        password = request.form['password']
-        confirm_password = request.form['confirm_password']
-
-        if password != confirm_password:
-            # Return an error message if the passwords do not match
-            return 'Passwords do not match'
-
-        # Use SQLAlchemy to add the new user to the database
-        new_user = User(username=username, email=email, password=password)
-        db.session.add(new_user)
-        db.session.commit()
-        user = User.query.filter_by(username=username).first()
-        if user is not None:
-            print(user)
-        else:
-            print('nie zarejestrowano ')
-        return redirect(url_for('index'))
-
-    return render_template('register.html')
-
-
 if __name__ == '__main__':
-    db.init_app(app)
     with app.app_context():
         db.create_all()
     app.run(debug=True)
