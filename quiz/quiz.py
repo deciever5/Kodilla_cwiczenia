@@ -123,7 +123,7 @@ def quiz():
 
 
 @app.route("/submit", methods=["POST"])
-@login_required
+
 def submit():
     # Get the answers from the form data
     user_quiz = request.form
