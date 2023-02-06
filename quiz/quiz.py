@@ -33,10 +33,7 @@ class User(db.Model, UserMixin):
         return True
 
     def get_id(self):
-        """Return the email address to satisfy Flask-Login's requirements."""
         return str(self.id)
-
-
 
 
 class Score(db.Model):
@@ -47,7 +44,6 @@ class Score(db.Model):
     score = Column(Integer)
 
     def get_id(self):
-        """Return the email address to satisfy Flask-Login's requirements."""
         return str(self.id)
 
     def __repr__(self):
@@ -89,7 +85,7 @@ def register():
         new_user = User(
             username=username,
             email=email,
-            password=generate_password_hash(password,method='sha256'))
+            password=generate_password_hash(password, method='sha256'))
         db.session.add(new_user)
         db.session.commit()
         user = User.query.filter_by(username=username).first()
