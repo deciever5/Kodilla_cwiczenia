@@ -57,7 +57,7 @@ class Score(db.Model):
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('quiz'))
 
     if request.method == 'POST':
         email = request.form['email']
@@ -89,11 +89,7 @@ def register():
         new_user = User(
             username=username,
             email=email,
-            password=generate_password_hash(
-                password,
-                method='sha256'
-            )
-        )
+            password=generate_password_hash(password,method='sha256'))
         db.session.add(new_user)
         db.session.commit()
         user = User.query.filter_by(username=username).first()
