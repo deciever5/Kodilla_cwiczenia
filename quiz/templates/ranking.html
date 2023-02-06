@@ -9,22 +9,25 @@
     </div>
     <div class="row">
       <div class="col-12">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Username</th>
-              <th>Score</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for user in users %}
-              <tr>
-                <td>{{ user.username }}</td>
-                <td>{{ user.score }}</td>
-              </tr>
-            {% endfor %}
-          </tbody>
-        </table>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Username</th>
+                  <th scope="col">Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                        {% for item in scores_with_users %}
+                    <tr>
+                      <td>{{ loop.index }}</td>
+                      <td>{{ item.username }}</td>
+                      <td>{{ item.score }}</td>
+                    </tr>
+                    {% endfor %}
+              </tbody>
+            </table>
+
       </div>
     </div>
   </div>
