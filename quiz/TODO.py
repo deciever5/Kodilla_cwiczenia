@@ -9,4 +9,5 @@
     Create a page to display the rankings of all users who have taken the quiz, and make it publicly accessible.
     Optionally, create an API endpoint to access the rankings in JSON format.
 
-This should provide a basic framework for the quiz application. You can further customize and improve it by adding more features, such as themes for the quizzes, levels of difficulty, etc."""
+This should provide a basic framework for the quiz application. You can further customize and improve it by adding
+more features, such as themes for the quizzes, levels of difficulty, etc."""

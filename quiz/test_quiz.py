@@ -1,9 +1,10 @@
 import unittest
 import requests_mock
+from flask import url_for, session
 from flask_login import current_user
 from werkzeug.security import generate_password_hash
 
-from quiz import app, db, User
+from quiz import app, db, User, Score
 
 
 class LoginTests(unittest.TestCase):
@@ -162,6 +163,117 @@ class QuizTestCase(unittest.TestCase):
                 print(f"An error occurred: {e}")
                 print(f"Response data: {response.get_data(as_text=True)}")
 
+
+class RankingTestCase(unittest.TestCase):
+    def setUp(self):
+        # Create a test client
+        self.client = app.test_client()
+
+        # Create a test database
+        app.config['TESTING'] = True
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+        app.app_context().push()
+        db.drop_all()
+        db.create_all()
+
+        # Create test data
+        user = User(username='test_user')
+        db.session.add(user)
+        score = Score(user_id=user.id, score=100)
+        db.session.add(score)
+        db.session.commit()
+
+    def tearDown(self):
+        db.session.remove()
+        db.drop_all()
+
+    def test_ranking_GET(self):
+        response = self.client.get('/ranking', follow_redirects=True)
+
+        # Check that the response is 200 OK
+        self.assertEqual(response.status_code, 200)
+
+        # Check that the ranking is displayed
+        self.assertIn(b'scores_with_users', response.data)
+
+        # Check that the test data is displayed
+        self.assertIn(b'test_user', response.data)
+        self.assertIn(b'100', response.data)
+
+
+
+class LogoutTestCase(unittest.TestCase):
+    def setUp(self):
+        app.config['TESTING'] = True
+        app.config['WTF_CSRF_ENABLED'] = False
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
+        self.client = app.test_client()
+        app.app_context().push()
+        db.create_all()
+
+        # Create a test user
+        self.user = User(username='testuser')
+        self.user.set_password('testpassword')
+        db.session.add(self.user)
+        db.session.commit()
+
+        # Log the test user in
+        self.client.post(url_for('login'), data={'username': 'testuser', 'password': 'testpassword'})
+
+    def tearDown(self):
+        db.session.remove()
+        db.drop_all()
+
+    def test_logout(self):
+        response = self.client.get(url_for('logout'))
+
+        # Check if the response redirects to the index page
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.location, 'http://localhost' + url_for('index'))
+
+        # Check if the user is logged out
+        self.assertFalse(current_user.is_authenticated)
+
+class SubmitTests(unittest.TestCase):
+
+    def setUp(self):
+        app.config['TESTING'] = True
+        app.config['WTF_CSRF_ENABLED'] = False
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+        self.app = app.test_client()
+        app.app_context().push()
+        db.create_all()
+
+        user = User(username='test_user')
+        db.session.add(user)
+        db.session.commit()
+
+    def tearDown(self):
+        db.session.remove()
+        db.drop_all()
+
+    def test_submit_POST(self):
+        with app.test_request_context():
+            with app.test_client() as client:
+                # login the user
+                user = User(username='test_user')
+
+                with client.session_transaction() as sess:
+                    sess['questions'] = [{"question": "Question 1", "correct_answer": "Answer 1"}]
+
+                # Make a POST request to the submit endpoint
+                response = client.post('/submit', data={
+                    "Question 1": "Answer 1"
+                })
+
+                # Check that the response is a redirect to the index endpoint
+                self.assertEqual(response.status_code, 302)
+
+                # Check that the score was added to the database
+                score = Score.query.first()
+                self.assertIsNotNone(score)
+                self.assertEqual(score.score, 1)
+                self.assertEqual(score.user_id, user.id)
 
 if __name__ == '__main__':
     unittest.main()

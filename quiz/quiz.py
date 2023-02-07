@@ -5,6 +5,8 @@ from flask_sqlalchemy import SQLAlchemy
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import UserMixin
 from sqlalchemy import Integer, Column, String
+import collections
+
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///quiz_web_app.db'
@@ -123,10 +125,10 @@ def quiz():
 
 
 @app.route("/submit", methods=["POST"])
-
 def submit():
     # Get the answers from the form data
     user_quiz = request.form
+
     phrases = session['questions']
     score = 0
     for phrase in phrases:
