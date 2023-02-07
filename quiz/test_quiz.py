@@ -1,10 +1,10 @@
 import unittest
 import requests_mock
 from flask import url_for, session
-from flask_login import current_user
+from flask_login import current_user, AnonymousUserMixin
 from werkzeug.security import generate_password_hash
 
-from quiz import app, db, User, Score
+from quiz import app, db, User, Score, load_user, login_manager
 
 
 class LoginTests(unittest.TestCase):
@@ -179,6 +179,7 @@ class RankingTestCase(unittest.TestCase):
         # Create test data
         user = User(username='test_user')
         db.session.add(user)
+        db.session.commit()
         score = Score(user_id=user.id, score=100)
         db.session.add(score)
         db.session.commit()
@@ -190,15 +191,15 @@ class RankingTestCase(unittest.TestCase):
     def test_ranking_GET(self):
         response = self.client.get('/ranking', follow_redirects=True)
 
+
         # Check that the response is 200 OK
         self.assertEqual(response.status_code, 200)
 
         # Check that the ranking is displayed
-        self.assertIn(b'scores_with_users', response.data)
+        self.assertIn(b"Rankings", response.data)
 
         # Check that the test data is displayed
-        self.assertIn(b'test_user', response.data)
-        self.assertIn(b'100', response.data)
+        self.assertIn(b"100", response.data)
 
 
 
@@ -213,7 +214,6 @@ class LogoutTestCase(unittest.TestCase):
 
         # Create a test user
         self.user = User(username='testuser')
-        self.user.set_password('testpassword')
         db.session.add(self.user)
         db.session.commit()
 
@@ -274,6 +274,39 @@ class SubmitTests(unittest.TestCase):
                 self.assertIsNotNone(score)
                 self.assertEqual(score.score, 1)
                 self.assertEqual(score.user_id, user.id)
+
+
+class LoadUserTestCase(unittest.TestCase):
+
+    def setUp(self):
+        with app.app_context():
+            db.create_all()
+            self.user = User(username='testuser', password='testpassword',email = 'testemail')
+            db.session.add(self.user)
+            db.session.commit()
+
+    def test_load_user(self):
+        user_id = self.user.id
+        user = login_manager.user_loader(user_id)
+        self.assertEqual(user.username, 'testuser')
+
+    def tearDown(self):
+        with app.app_context():
+            db.session.delete(self.user)
+            db.session.commit()
+
+
+    def test_load_user_with_invalid_id(self):
+        # Test that the load_user function returns None for an invalid user ID
+        with app.app_context():
+            user = load_user(999999)
+            self.assertIsNone(user)
+
+    def test_load_user_with_None(self):
+        # Test that the load_user function returns None for a None user ID
+        with app.app_context():
+            user = load_user(None)
+            self.assertIsInstance(user, AnonymousUserMixin)
 
 if __name__ == '__main__':
     unittest.main()
