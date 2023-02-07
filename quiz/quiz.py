@@ -6,10 +6,10 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from flask_login import UserMixin
 from sqlalchemy import Integer, Column, String
 
-
-
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///quiz_web_app.db'
+app.config['DEBUG'] = True
+app.config['TESTING'] = True
 app.secret_key = 'secret_key'
 db = SQLAlchemy(app)
 
@@ -25,6 +25,7 @@ def load_user(user_id):
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
+
     id = Column(Integer, primary_key=True)
     username = Column(String(30), unique=True)
     email = Column(String(50), unique=True)
@@ -134,7 +135,6 @@ def submit():
     for phrase in phrases:
         for (question, answer) in user_quiz.items():
             if phrase.get('question') == question and phrase.get('correct_answer') == answer:
-                print('Got one!')
                 score += 1
 
     user_id = current_user.get_id()
@@ -158,7 +158,6 @@ def ranking():
 
 
 @app.route('/logout')
-@login_required
 def logout():
     logout_user()
     return redirect(url_for('index'))

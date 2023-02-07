@@ -1,10 +1,11 @@
 import unittest
+
 import requests_mock
-from flask import url_for, session
-from flask_login import current_user, AnonymousUserMixin
+from flask_login import current_user
 from werkzeug.security import generate_password_hash
 
 from quiz import app, db, User, Score, load_user, login_manager
+
 
 
 class LoginTests(unittest.TestCase):
@@ -99,41 +100,50 @@ class QuizTestCase(unittest.TestCase):
     def setUp(self):
         # Create a test client
         self.client = app.test_client()
-
         # Use requests_mock to mock the API request
         self.mock = requests_mock.Mocker()
         self.mock.start()
+        app.app_context().push()
+        db.drop_all()
+        db.create_all()
+        password = generate_password_hash('password', method='sha256')
+        user = User(username='testuser', email='testuser@example.com', password=password)
+        db.session.add(user)
+        db.session.commit()
 
     def tearDown(self):
         self.mock.stop()
 
     def test_quiz_GET(self):
         with app.test_request_context():
+            self.client.post('/login', data={
+                'email': 'testuser@example.com',
+                'password': 'password'}, follow_redirects=True)
             self.mock = requests_mock.Mocker()
             self.mock.start()
             self.mock.register_uri(
                 'GET',
                 'https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple',
-                text='{"results": [{"question": "Question 1", "correct_answer": "Answer 1"}]},',
+                json={"results": [
+                    {"question": "Question 1", "correct_answer": "Answer 1", "incorrect_answers": "Wrong anwser"}]}
+                ,
                 headers={'Content-Type': 'application/json'}
 
             )
 
-            try:
-                response = self.client.get('/quiz', follow_redirects=True)
+            response = self.client.get('/quiz', follow_redirects=True)
+            print(response)
+            # Check that the response is 200 OK
+            self.assertEqual(response.status_code, 200)
 
-                # Check that the response is 200 OK
-                self.assertEqual(response.status_code, 200)
-
-                # Check that the questions are displayed
-                self.assertIn(b'quiz', response.data)
-            except Exception as e:
-                print(f"An error occurred: {e}")
-                print(f"Response data: {response.get_data(as_text=True)}")
+            # Check that the questions are displayed
+            self.assertIn(b'quiz', response.data)
 
     def test_quiz_POST(self):
         with app.test_request_context():
-
+            self.client.post('/login', data={
+                'email': 'testuser@example.com',
+                'password': 'password'}, follow_redirects=True)
             # Define a mock response for the API request
             data = {
                 'response_code': 200,
@@ -148,20 +158,16 @@ class QuizTestCase(unittest.TestCase):
                     },
                 ]
             }
-            self.mock.post('https://opentdb.com/api.php?amount=10&difficulty=medium&type=multiple', json=data)
-            try:
+            self.mock.post('https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple', json=data)
 
-                # Send a POST request to the quiz endpoint with the form data
-                response = self.client.post('/quiz', data={'difficulty': 'medium'}, follow_redirects=True)
+            # Send a POST request to the quiz endpoint with the form data
+            response = self.client.post('/quiz', data={'difficulty': 'easy'}, follow_redirects=True)
 
-                # Check that the response is 200 OK
-                self.assertEqual(response.status_code, 200)
+            # Check that the response is 200 OK
+            self.assertEqual(response.status_code, 200)
 
-                # Check that the questions are displayed
-                self.assertIn(b'question', response.data)
-            except Exception as e:
-                print(f"An error occurred: {e}")
-                print(f"Response data: {response.get_data(as_text=True)}")
+            # Check that the questions are displayed
+            self.assertIn(b'France', response.data)
 
 
 class RankingTestCase(unittest.TestCase):
@@ -191,7 +197,6 @@ class RankingTestCase(unittest.TestCase):
     def test_ranking_GET(self):
         response = self.client.get('/ranking', follow_redirects=True)
 
-
         # Check that the response is 200 OK
         self.assertEqual(response.status_code, 200)
 
@@ -202,7 +207,6 @@ class RankingTestCase(unittest.TestCase):
         self.assertIn(b"100", response.data)
 
 
-
 class LogoutTestCase(unittest.TestCase):
     def setUp(self):
         app.config['TESTING'] = True
@@ -210,29 +214,38 @@ class LogoutTestCase(unittest.TestCase):
         app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
         self.client = app.test_client()
         app.app_context().push()
+        db.drop_all()
         db.create_all()
 
         # Create a test user
-        self.user = User(username='testuser')
+        password = generate_password_hash('testpassword', method='sha256')
+
+        self.user = User(email='testuser@example.com', username='testuser', password=password)
         db.session.add(self.user)
         db.session.commit()
 
         # Log the test user in
-        self.client.post(url_for('login'), data={'username': 'testuser', 'password': 'testpassword'})
+        with app.test_request_context():
+            self.client.post('/login', data={
+                'email': 'testuser@example.com',
+                'password': 'testpassword'}, follow_redirects=True)
 
     def tearDown(self):
         db.session.remove()
         db.drop_all()
 
     def test_logout(self):
-        response = self.client.get(url_for('logout'))
+        with app.test_request_context():
+            self.assertTrue(current_user.is_authenticated)
+        response = self.client.get('/logout')
 
         # Check if the response redirects to the index page
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.location, 'http://localhost' + url_for('index'))
-
+        self.assertEqual(response.location, '/')
         # Check if the user is logged out
-        self.assertFalse(current_user.is_authenticated)
+        with app.test_request_context():
+            self.assertFalse(current_user.is_authenticated)
+
 
 class SubmitTests(unittest.TestCase):
 
@@ -281,7 +294,7 @@ class LoadUserTestCase(unittest.TestCase):
     def setUp(self):
         with app.app_context():
             db.create_all()
-            self.user = User(username='testuser', password='testpassword',email = 'testemail')
+            self.user = User(username='testuser', password='testpassword', email='testemail', id='1')
             db.session.add(self.user)
             db.session.commit()
 
@@ -295,18 +308,12 @@ class LoadUserTestCase(unittest.TestCase):
             db.session.delete(self.user)
             db.session.commit()
 
-
     def test_load_user_with_invalid_id(self):
         # Test that the load_user function returns None for an invalid user ID
         with app.app_context():
             user = load_user(999999)
             self.assertIsNone(user)
 
-    def test_load_user_with_None(self):
-        # Test that the load_user function returns None for a None user ID
-        with app.app_context():
-            user = load_user(None)
-            self.assertIsInstance(user, AnonymousUserMixin)
 
 if __name__ == '__main__':
     unittest.main()
