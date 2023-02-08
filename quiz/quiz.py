@@ -23,7 +23,7 @@ def load_user(user_id):
     return User.query.filter_by(id=user_id).first()
 
 
-class User(db.Model, UserMixin):
+class User(UserMixin, db.Model):
     __tablename__ = 'users'
 
     id = Column(Integer, primary_key=True)
@@ -86,9 +86,7 @@ def register():
         # Use SQLAlchemy to add the new user to the database
 
         new_user = User(
-            username=username,
-            email=email,
-            password=generate_password_hash(password, method='sha256'))
+            username=username, email=email, password=generate_password_hash(password, method='sha256'))  # type: ignore
         db.session.add(new_user)
         db.session.commit()
         user = User.query.filter_by(username=username).first()
@@ -117,6 +115,7 @@ def quiz():
         difficulty = request.form.get('difficulty')
         endpoint = f'https://opentdb.com/api.php?amount=10&difficulty={difficulty}&type=multiple'
     # Make a request to the API
+
     response = requests.get(endpoint)
     data = response.json()
     # Extract the questions from the API response

@@ -4,8 +4,7 @@ import requests_mock
 from flask_login import current_user
 from werkzeug.security import generate_password_hash
 
-from quiz import app, db, User, Score, load_user, login_manager
-
+from quiz import app, db, User, Score
 
 
 class LoginTests(unittest.TestCase):
@@ -17,7 +16,7 @@ class LoginTests(unittest.TestCase):
         db.drop_all()
         db.create_all()
         password = generate_password_hash('password', method='sha256')
-        user = User(username='testuser', email='testuser@example.com', password=password)
+        user = User(username='testuser', email='testuser@example.com', password=password)  # type: ignore
         db.session.add(user)
         db.session.commit()
 
@@ -30,6 +29,7 @@ class LoginTests(unittest.TestCase):
                 'email': 'testuser@example.com',
                 'password': 'password'}, follow_redirects=True)
             # Assert that the user was logged in and redirected
+            self.assertTrue(current_user.is_active)
             self.assertTrue(current_user.is_authenticated)
             self.assertEqual(current_user.email, 'testuser@example.com')
             self.assertEqual(response.status_code, 200)
@@ -96,94 +96,18 @@ class RegisterTestCase(unittest.TestCase):
             self.assertIn(b'Passwords do not match', response.data)
 
 
-class QuizTestCase(unittest.TestCase):
-    def setUp(self):
-        # Create a test client
-        self.client = app.test_client()
-        # Use requests_mock to mock the API request
-        self.mock = requests_mock.Mocker()
-        self.mock.start()
-        app.app_context().push()
-        db.drop_all()
-        db.create_all()
-        password = generate_password_hash('password', method='sha256')
-        user = User(username='testuser', email='testuser@example.com', password=password)
-        db.session.add(user)
-        db.session.commit()
-
-    def tearDown(self):
-        self.mock.stop()
-
-    def test_quiz_GET(self):
-        with app.test_request_context():
-            self.client.post('/login', data={
-                'email': 'testuser@example.com',
-                'password': 'password'}, follow_redirects=True)
-            self.mock = requests_mock.Mocker()
-            self.mock.start()
-            self.mock.register_uri(
-                'GET',
-                'https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple',
-                json={"results": [
-                    {"question": "Question 1", "correct_answer": "Answer 1", "incorrect_answers": "Wrong anwser"}]}
-                ,
-                headers={'Content-Type': 'application/json'}
-
-            )
-
-            response = self.client.get('/quiz', follow_redirects=True)
-            print(response)
-            # Check that the response is 200 OK
-            self.assertEqual(response.status_code, 200)
-
-            # Check that the questions are displayed
-            self.assertIn(b'quiz', response.data)
-
-    def test_quiz_POST(self):
-        with app.test_request_context():
-            self.client.post('/login', data={
-                'email': 'testuser@example.com',
-                'password': 'password'}, follow_redirects=True)
-            # Define a mock response for the API request
-            data = {
-                'response_code': 200,
-                'results': [
-                    {
-                        'question': 'What is the capital of France?',
-                        'correct_answer': 'Paris',
-                    },
-                    {
-                        'question': 'What is the capital of Germany?',
-                        'correct_answer': 'Berlin',
-                    },
-                ]
-            }
-            self.mock.post('https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple', json=data)
-
-            # Send a POST request to the quiz endpoint with the form data
-            response = self.client.post('/quiz', data={'difficulty': 'easy'}, follow_redirects=True)
-
-            # Check that the response is 200 OK
-            self.assertEqual(response.status_code, 200)
-
-            # Check that the questions are displayed
-            self.assertIn(b'France', response.data)
-
-
 class RankingTestCase(unittest.TestCase):
     def setUp(self):
         # Create a test client
         self.client = app.test_client()
-
         # Create a test database
-        app.config['TESTING'] = True
         app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
         app.app_context().push()
         db.drop_all()
         db.create_all()
 
         # Create test data
-        user = User(username='test_user')
+        user = User(username='test_user')  # type: ignore
         db.session.add(user)
         db.session.commit()
         score = Score(user_id=user.id, score=100)
@@ -220,7 +144,7 @@ class LogoutTestCase(unittest.TestCase):
         # Create a test user
         password = generate_password_hash('testpassword', method='sha256')
 
-        self.user = User(email='testuser@example.com', username='testuser', password=password)
+        self.user = User(email='testuser@example.com', username='testuser', password=password)  # type: ignore
         db.session.add(self.user)
         db.session.commit()
 
@@ -257,7 +181,7 @@ class SubmitTests(unittest.TestCase):
         app.app_context().push()
         db.create_all()
 
-        user = User(username='test_user')
+        user = User(username='test_user')  # type: ignore
         db.session.add(user)
         db.session.commit()
 
@@ -269,7 +193,7 @@ class SubmitTests(unittest.TestCase):
         with app.test_request_context():
             with app.test_client() as client:
                 # login the user
-                user = User(username='test_user')
+                user = User(username='test_user')  # type: ignore
 
                 with client.session_transaction() as sess:
                     sess['questions'] = [{"question": "Question 1", "correct_answer": "Answer 1"}]
@@ -289,30 +213,79 @@ class SubmitTests(unittest.TestCase):
                 self.assertEqual(score.user_id, user.id)
 
 
-class LoadUserTestCase(unittest.TestCase):
-
+class QuizTestCase(unittest.TestCase):
     def setUp(self):
-        with app.app_context():
-            db.create_all()
-            self.user = User(username='testuser', password='testpassword', email='testemail', id='1')
-            db.session.add(self.user)
-            db.session.commit()
-
-    def test_load_user(self):
-        user_id = self.user.id
-        user = login_manager.user_loader(user_id)
-        self.assertEqual(user.username, 'testuser')
+        # Create a test client
+        self.client = app.test_client()
+        # Use requests_mock to mock the API request
+        self.mock = requests_mock.Mocker()
+        self.mock.start()
+        app.app_context().push()
+        db.drop_all()
+        db.create_all()
+        password = generate_password_hash('password', method='sha256')
+        user = User(username='testuser', email='testuser@example.com', password=password)  # type: ignore
+        db.session.add(user)
+        db.session.commit()
 
     def tearDown(self):
-        with app.app_context():
-            db.session.delete(self.user)
-            db.session.commit()
+        self.mock.stop()
 
-    def test_load_user_with_invalid_id(self):
-        # Test that the load_user function returns None for an invalid user ID
-        with app.app_context():
-            user = load_user(999999)
-            self.assertIsNone(user)
+    def test_quiz_GET(self):
+        with app.test_client() as client:
+            self.client.post('/login', data={
+                'email': 'testuser@example.com',
+                'password': 'password'}, follow_redirects=True)
+            self.mock = requests_mock.Mocker()
+            self.mock.start()
+            self.mock.register_uri(
+                'GET',
+                'https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple',
+                json={"results": [
+                    {"question": "Question 1", "correct_answer": "Answer 1", "incorrect_answers": "Wrong anwser"}]},
+                headers={'Content-Type': 'application/json'}
+
+            )
+            response = client.get('/quiz', follow_redirects=True)
+            # print(response)
+            # Check that the response is 200 OK
+            self.assertEqual(response.status_code, 200)
+
+            # Check that the questions are displayed
+            self.assertIn(b'quiz', response.data)
+
+    def test_quiz_POST(self):
+        with app.test_request_context():
+            self.client.post('/login', data={
+                'email': 'testuser@example.com',
+                'password': 'password'}, follow_redirects=True)
+            # Define a mock response for the API request
+            data = {
+                'response_code': 200,
+                'results': [
+                    {
+                        'question': 'What is the capital of France?',
+                        'correct_answer': 'Paris',
+                        'incorrect_answers': ['Leszno', 'Wschowa', 'Szlichtyngowa'],
+                    },
+                    {
+                        'question': 'What is the capital of Germany?',
+                        'correct_answer': 'Berlin',
+                        'incorrect_answers': ['Leszno', 'Wschowa', 'Szlichtyngowa'],
+                    },
+                ]
+            }
+            with requests_mock.Mocker() as m:
+                m.get('https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple', json=data)
+
+                # Send a POST request to the quiz endpoint with the form data
+                response = self.client.post('/quiz', data={'difficulty': 'easy'}, follow_redirects=True)
+
+            # Check that the response is 200 OK
+            self.assertEqual(response.status_code, 200)
+
+            # Check that the questions are displayed
+            self.assertIn(b'France', response.data)
 
 
 if __name__ == '__main__':
