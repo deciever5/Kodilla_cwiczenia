@@ -8,9 +8,9 @@ from sqlalchemy import Integer, Column, String
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///quiz_web_app.db'
-app.config['DEBUG'] = True
-app.config['TESTING'] = True
-app.secret_key = 'secret_key'
+app.config['DEBUG'] = False
+app.config['TESTING'] = False
+app.secret_key = 'input_secret_key'
 db = SQLAlchemy(app)
 
 login_manager = LoginManager(app)
@@ -165,4 +165,4 @@ def logout():
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    app.run(debug=True)
+    app.run()

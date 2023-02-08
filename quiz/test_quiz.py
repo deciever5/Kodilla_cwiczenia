@@ -3,10 +3,15 @@ import unittest
 import requests_mock
 from flask_login import current_user
 from werkzeug.security import generate_password_hash
-
 from quiz import app, db, User, Score
-import collections
-collections.Callable = collections.abc.Callable
+import sys
+import platform
+
+# solution for a bug which causes errors while trying to run pytest on Windows machine withc python version >= 3.9
+if sys.version_info >= (3, 9) and platform.system() == "Windows":
+    import collections
+    collections.Callable = collections.abc.Callable
+
 
 class LoginTests(unittest.TestCase):
     def setUp(self):
@@ -253,7 +258,8 @@ class QuizTestCase(unittest.TestCase):
                 'GET',
                 'https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple',
                 json={"results": [
-                    {"question": "Question 1", "correct_answer": "Answer 1", "incorrect_answers": ["Wrong anwser","Another wrong anwser"]}]},
+                    {"question": "Question 1", "correct_answer": "Answer 1",
+                     "incorrect_answers": ["Wrong anwser", "Another wrong anwser"]}]},
                 headers={'Content-Type': 'application/json'}
 
             )
