@@ -5,7 +5,8 @@ from flask_login import current_user
 from werkzeug.security import generate_password_hash
 
 from quiz import app, db, User, Score
-
+import collections
+collections.Callable = collections.abc.Callable
 
 class LoginTests(unittest.TestCase):
     def setUp(self):
