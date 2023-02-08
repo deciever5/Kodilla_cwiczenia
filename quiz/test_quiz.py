@@ -242,7 +242,7 @@ class QuizTestCase(unittest.TestCase):
                 'GET',
                 'https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple',
                 json={"results": [
-                    {"question": "Question 1", "correct_answer": "Answer 1", "incorrect_answers": "Wrong anwser"}]},
+                    {"question": "Question 1", "correct_answer": "Answer 1", "incorrect_answers": ["Wrong anwser","Another wrong anwser"]}]},
                 headers={'Content-Type': 'application/json'}
 
             )
