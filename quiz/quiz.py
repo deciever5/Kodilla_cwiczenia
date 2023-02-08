@@ -120,7 +120,6 @@ def quiz():
     data = response.json()
     # Extract the questions from the API response
     questions = data['results']
-    print(questions)
     session['questions'] = questions
     return render_template('quiz.html', questions=questions, difficulty=difficulty)
 

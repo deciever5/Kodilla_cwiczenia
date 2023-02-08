@@ -105,7 +105,17 @@ class RankingTestCase(unittest.TestCase):
         app.app_context().push()
         db.drop_all()
         db.create_all()
+        self.mock = requests_mock.Mocker()
+        self.mock.start()
+        self.mock.register_uri(
+            'GET',
+            'https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple',
+            json={"results": [
+                {"question": "Question 1", "correct_answer": "Answer 1",
+                 "incorrect_answers": ["Wrong anwser", "Another wrong anwser"]}]},
+            headers={'Content-Type': 'application/json'}
 
+        )
         # Create test data
         user = User(username='test_user')  # type: ignore
         db.session.add(user)
@@ -276,10 +286,10 @@ class QuizTestCase(unittest.TestCase):
                 ]
             }
             with requests_mock.Mocker() as m:
-                m.get('https://opentdb.com/api.php?amount=10&difficulty=easy&type=multiple', json=data)
+                m.get('https://opentdb.com/api.php?amount=10&difficulty=hard&type=multiple', json=data)
 
                 # Send a POST request to the quiz endpoint with the form data
-                response = self.client.post('/quiz', data={'difficulty': 'easy'}, follow_redirects=True)
+                response = self.client.post('/quiz', data={'difficulty': 'hard'}, follow_redirects=True)
 
             # Check that the response is 200 OK
             self.assertEqual(response.status_code, 200)
