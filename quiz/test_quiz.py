@@ -1,5 +1,5 @@
 import unittest
-
+import pytest
 import requests_mock
 from flask_login import current_user
 from werkzeug.security import generate_password_hash
@@ -11,6 +11,7 @@ import platform
 if sys.version_info >= (3, 9) and platform.system() == "Windows":
     import collections
     collections.Callable = collections.abc.Callable
+
 
 
 class LoginTests(unittest.TestCase):
@@ -147,45 +148,33 @@ class RankingTestCase(unittest.TestCase):
         self.assertIn(b"100", response.data)
 
 
-class LogoutTestCase(unittest.TestCase):
-    def setUp(self):
-        app.config['TESTING'] = True
-        app.config['WTF_CSRF_ENABLED'] = False
-        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
-        self.client = app.test_client()
-        app.app_context().push()
-        db.drop_all()
-        db.create_all()
+@pytest.fixture(scope="class")
+def client():
+    app.config['TESTING'] = True
+    app.config['WTF_CSRF_ENABLED'] = False
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'
+    client = app.test_client()
+    yield client
 
-        # Create a test user
-        password = generate_password_hash('testpassword', method='sha256')
+@pytest.fixture(scope="class")
+def user(client):
+    db.create_all()
+    password = generate_password_hash('testpassword', method='sha256')
+    user = User(email='testuser@example.com', username='testuser', password=password)
+    db.session.add(user)
+    db.session.commit()
+    with app.test_request_context():
+        client.post('/login', data={'email': 'testuser@example.com', 'password': 'testpassword'}, follow_redirects=True)
+    yield user
 
-        self.user = User(email='testuser@example.com', username='testuser', password=password)  # type: ignore
-        db.session.add(self.user)
-        db.session.commit()
+def test_logout(client, user):
+    with app.test_request_context():
+        assert current_user.is_authenticated
+        response = client.get('/logout')
 
-        # Log the test user in
-        with app.test_request_context():
-            self.client.post('/login', data={
-                'email': 'testuser@example.com',
-                'password': 'testpassword'}, follow_redirects=True)
-
-    def tearDown(self):
-        db.session.remove()
-        db.drop_all()
-
-    def test_logout(self):
-        with app.test_request_context():
-            self.assertTrue(current_user.is_authenticated)
-        response = self.client.get('/logout')
-
-        # Check if the response redirects to the index page
-        self.assertEqual(response.status_code, 302)
-        self.assertEqual(response.location, '/')
-        # Check if the user is logged out
-        with app.test_request_context():
-            self.assertFalse(current_user.is_authenticated)
-
+        assert response.status_code == 302
+        assert response.location == '/'
+        assert not current_user.is_authenticated
 
 class SubmitTests(unittest.TestCase):
 
